@@ -1,0 +1,28 @@
+{
+  "name": "customer_management",
+  "version": "1.0.0",
+  "description": "Build REST API with nodejs, express, mongodb and jwt",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "REST",
+    "API",
+    "Mongodb"
+  ],
+  "author": "Pedro Piloto",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.5.3",
+    "body-parser": "1.18.2",
+    "create-singleton": "^0.0.4",
+    "dotenv": "^7.0.0",
+    "express": "4.16.3",
+    "mongoose": "^5.5.7",
+    "morgan": "^1.9.1",
+    "uuid": "^3.3.2"
+  }
+}

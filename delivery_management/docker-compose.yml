@@ -1,0 +1,21 @@
+version: "3.5"
+services:
+  delivery_management:
+    build: .
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/usr/src/app
+    command: python3 index.py
+    environment:
+      - ENV=development
+      - PORT=4000
+      - MONGO_URL=mongodb://mongo:27017/delivery_management
+      - AMQP_URL:
+      - LOCAL_USER=piloto
+    links:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - 27022:27017

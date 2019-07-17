@@ -1,0 +1,448 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API INSIS"
+  },
+  "host": "104.248.164.10:8000",
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "securityDefinitions": {
+    "Apikey": {
+      "type": "apiKey",
+      "name": "apikey",
+      "in": "query"
+    }
+  },
+  "security": [
+    {
+      "Apikey": []
+    }
+  ],
+  "basePath": "/v1",
+  "paths": {
+    "/order": {
+      "get": {
+        "summary": "List all orders",
+        "operationId": "listOrders",
+        "tags": ["Order"],
+        "responses": {
+          "200": {
+            "description": "A paged array of orders",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "success"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Stock list found!!!"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "orders": {
+                      "$ref": "#/definitions/orders"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create an order",
+        "operationId": "createOrder",
+        "tags": ["Order"],
+        "parameters": [
+          {
+            "name": "order",
+            "in": "body",
+            "description": "Request body to create an order",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/order"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully created"
+          }
+        }
+      }
+    },
+    "/customer": {
+      "get": {
+        "summary": "List all customers",
+        "operationId": "listCustomers",
+        "tags": ["Customer"],
+        "responses": {
+          "200": {
+            "description": "A paged array of customers",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "success"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Customers list found!!!"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "customers": {
+                      "$ref": "#/definitions/customers"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a customer",
+        "operationId": "createCustomer",
+        "tags": ["Customer"],
+        "parameters": [
+          {
+            "name": "customer",
+            "in": "body",
+            "description": "Request body to create an customer",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/customer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully created"
+          }
+        }
+      }
+    },
+    "/dish": {
+      "get": {
+        "summary": "List all dishes",
+        "operationId": "listDishes",
+        "tags": ["Dish"],
+        "responses": {
+          "200": {
+            "description": "A paged array of dishes",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "success"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Dishes list found!!!"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "orders": {
+                      "$ref": "#/definitions/dishes"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a dish",
+        "operationId": "createDish",
+        "tags": ["Dish"],
+        "parameters": [
+          {
+            "name": "dish",
+            "in": "body",
+            "description": "Request body to create a dish",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/dish"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully created"
+          }
+        }
+      }
+    },
+    "/stock": {
+      "get": {
+        "summary": "List all ingredients",
+        "operationId": "listIngredients",
+        "tags": ["Stock"],
+        "responses": {
+          "200": {
+            "description": "A paged array of ingredients and their quantities",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "success"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Stock list found!!!"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "stocks": {
+                      "$ref": "#/definitions/stocks"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create an ingredient",
+        "operationId": "createIngredient",
+        "tags": ["Stock"],
+        "parameters": [
+          {
+            "name": "ingredient",
+            "in": "body",
+            "description": "Request body to create an ingredient",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/stock"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully created"
+          }
+        }
+      }
+    },
+    "/delivery": {
+      "get": {
+        "summary": "List all transports",
+        "operationId": "listTransports",
+        "tags": ["Transport"],
+        "responses": {
+          "200": {
+            "description": "A paged array of transports",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "success"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Transports list found!!!"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "deliveries": {
+                      "$ref": "#/definitions/deliveries"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a transport",
+        "operationId": "createTransport",
+        "tags": ["Transport"],
+        "parameters": [
+          {
+            "name": "delivery",
+            "in": "body",
+            "description": "Request body to create a delivery",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/delivery"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully created"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ingredient": {
+      "type": "object",
+      "required": ["code", "quantity"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "readOnly": true,
+          "example": "5d0caa312e0c4400174448e6"
+        },
+        "code": {
+          "type": "string",
+          "example": "Arroz"
+        },
+        "quantity": {
+          "type": "integer",
+          "example": 100
+        }
+      }
+    },
+    "stock": {
+      "type": "object",
+      "required": ["ingredient_code", "quantity"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "readOnly": true,
+          "example": "5d0caa312e0c4400174448e6"
+        },
+        "ingredient_code": {
+          "type": "string",
+          "example": "Arroz"
+        },
+        "quantity": {
+          "type": "integer",
+          "example": 100
+        }
+      }
+    },
+    "stocks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ingredient"
+      }
+    },
+    "order": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "readOnly": true,
+          "example": "5d0caa312e0c4400174448e6"
+        },
+        "released_on": {
+          "type": "string",
+          "example": "2019-01-26"
+        },
+        "state": {
+          "type": "integer",
+          "example": 1
+        },
+        "type": {
+          "type": "integer",
+          "example": 1
+        }
+      }
+    },
+    "orders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/order"
+      }
+    },
+    "customer": {
+      "type": "object",
+      "required": ["name", "card_number"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "readOnly": true,
+          "example": "5d0caa312e0c4400174448e6"
+        },
+        "name": {
+          "type": "string",
+          "example": "Example"
+        },
+        "card_number": {
+          "type": "string",
+          "example": "9999"
+        }
+      }
+    },
+    "customers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/customer"
+      }
+    },
+    "dish": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "readOnly": true,
+          "example": "5d0caa312e0c4400174448e6"
+        },
+        "name": {
+          "type": "string",
+          "example": "Example"
+        },
+        "ingredients": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ingredient"
+          }
+        }
+      }
+    },
+    "dishes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ingredient"
+      }
+    },
+    "delivery": {
+      "type": "object",
+      "required": ["transport", "quantity"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "readOnly": true,
+          "example": "5d0caa312e0c4400174448e6"
+        },
+        "transport": {
+          "type": "string",
+          "example": "Example"
+        },
+        "quantity": {
+          "type": "integer",
+          "example": 20
+        }
+      }
+    },
+    "deliveries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/delivery"
+      }
+    }
+  }
+}

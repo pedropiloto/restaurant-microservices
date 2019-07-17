@@ -1,0 +1,21 @@
+version: "3"
+services:
+  order_management:
+    build: .
+    command: nodemon start
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "3000:3000"
+    links:
+      - mongo
+    environment:
+      MONGO_URL: mongodb://mongo:27017/order_management
+      AMQP_URL:
+      NODE_ENV: development
+      LOCAL_USER: piloto
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
