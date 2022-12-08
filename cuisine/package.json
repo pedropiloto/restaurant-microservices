@@ -20,7 +20,7 @@
     "body-parser": "1.18.2",
     "create-singleton": "^0.0.4",
     "dotenv": "^7.0.0",
-    "express": "4.16.3",
+    "express": "4.17.3",
     "mongoose": "^5.5.7",
     "morgan": "^1.9.1",
     "uuid": "^3.3.2"
